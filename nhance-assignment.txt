@@ -1,0 +1,48 @@
+Scenario:
+
+There is an app where a user can play games.
+Game are categorised as easy, medium or hard. Max game score is 5000.
+User skill levels are beginner, intermediate, advanced and completed in increasing order.
+
+Build an api service which can serve games based on game difficulty and user progress.
+The app will hit this api after a user finishes a game to submit his score and to get updated user progress and next game name.
+The api will take user id and game score as input and return next game, user current level and progress % as output. A null or empty game score would mean first game.
+
+
+The rules are as follows.
+1. First game should be an easy game. 
+2. User is awarded a bonus based on his game score. If a user scores above a threshold, he would get more bonus points. Refer to threshold table for bonus details.
+3. If a user has exhausted all the games at a level, find a new game in lower level in decreasing order. If there are no new games, find a played game in lower level.
+4. A game shouldn't repeat until all other games at that or lower levels are played. 
+5. On reaching the next level, user score would be reset to 0.
+6. User won't be able to play more games on reaching completed level.
+
+A user will start at beginner level.
+Let's assume that we have a list of 6 games. A game has following attributes - id, name and difficulty.
+Id		Name		Difficulty
+1		Easy 1		easy
+2		Easy 2		easy
+3		Easy 3		easy
+4		Medium 1	medium
+5		Medium 2	medium
+6		Hard		hard
+
+Threshold details:
+Game level		Good score 		Good score bonus %		Normal bonus %
+Easy			4000			100%					20%
+Medium			3000			75%						15%
+Hard			2000			50%						10%
+
+Level scores:
+Level			Score
+Intermediate	15000
+Advanced		12000
+Completed		9000
+
+
+You can use in-memory to save objects. Database persistence is not required.
+Feel free to add Junit test cases and integration test cases.
+It would be great if you can add meaningful logging in the code.
+You can take any assumptions but don't forget to submit them with the assignment.
+
+Let me know in case you have any doubt.
